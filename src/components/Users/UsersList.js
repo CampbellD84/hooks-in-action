@@ -1,13 +1,29 @@
-import { useState } from "react";
-import { users } from "../../static.json";
+import { useState, useEffect } from "react";
+import Spinner from "../UI/Spinner";
 
 export default function UsersList() {
+  const [users, setUsers] = useState(null);
   const [usersIndex, setUsersIndex] = useState(0);
-  const user = users[usersIndex];
+  const user = users?.[usersIndex];
+
+  useEffect(() => {
+    fetch("http://localhost:3001/users")
+      .then((resp) => resp.json())
+      .then((data) => setUsers(data));
+  }, []);
+
+  if (users === null) {
+    return (
+      <p>
+        <Spinner />
+        Loading users...
+      </p>
+    );
+  }
 
   return (
     <>
-      <ul className="bookables items-list-nav">
+      <ul className="users items-list-nav">
         {users.map((user, i) => (
           <li key={user.id} className={i === usersIndex ? "selected" : null}>
             <button className="btn" onClick={() => setUsersIndex(i)}>
