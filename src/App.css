@@ -229,9 +229,7 @@ main {
     transform: rotate(360deg);
   }
 }
-.page-loading {
-  font-size: 300%;
-}
+
 .icon-loading {
   animation: spin 1.5s linear infinite;
 }
@@ -311,6 +309,16 @@ header .icon-loading {
 .grid {
   position: absolute;
   width: 100%;
+}
+
+.status {
+  transition: opacity 300ms;
+  transition-delay: 100ms;
+  opacity: 1;
+}
+
+.active .status {
+  opacity: 0;
 }
 
 .placeholder {
