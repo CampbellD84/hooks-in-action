@@ -30,5 +30,5 @@ export default function useFetch(url) {
     return () => (doUpdate = false);
   }, [url]);
 
-  return [data, status, error];
+  return { data, status, error };
 }
