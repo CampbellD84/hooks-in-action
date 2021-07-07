@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
-import useFetch from "../../utils/useFetch";
+import { useQuery } from "react-query";
+import getData from "../../utils/api";
 
 import BookablesList from "./BookablesList";
 import BookableDetails from "./BookableDetails";
@@ -12,7 +13,7 @@ export default function BookablesView() {
     data: bookables = [],
     status,
     error,
-  } = useFetch("http://localhost:3001/bookables");
+  } = useQuery("bookables", () => getData("http://localhost:3001/bookables"));
 
   const { id } = useParams();
 
