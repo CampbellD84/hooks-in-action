@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
 import BookablesView from "./BookablesView";
 import BookableEdit from "./BookableEdit";
-// import BookableNew from "./BookableNew";
+import BookableNew from "./BookableNew";
 
 export default function BookablesPage() {
   return (
@@ -15,7 +15,9 @@ export default function BookablesPage() {
       <Route path="/:id/edit">
         <BookableEdit />
       </Route>
-      <Route path="/new">{/* <BookableNew /> */}</Route>
+      <Route path="/new">
+        <BookableNew />
+      </Route>
     </Routes>
   );
 }

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useQueryClient, useMutation } from "react-query";
 
 import useFormState from "./useFormState";
@@ -18,13 +18,15 @@ export default function BookableNew() {
     error,
   } = useMutation(
     (item) => createItem("http://localhost:3001/bookables", item),
+
     {
       onSuccess: (bookable) => {
         queryClient.setQueryData("bookables", (old) => [
           ...(old || []),
           bookable,
-        ]),
-          navigate(`/bookables/${bookable.id}`);
+        ]);
+
+        navigate(`/bookables/${bookable.id}`);
       },
     }
   );
